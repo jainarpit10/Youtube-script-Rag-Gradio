@@ -21,6 +21,7 @@ AZURE_ENDPOINT=os.getenv("AZURE_ENDPOINT")
 AZURE_API_VERSION=os.getenv("AZURE_API_VERSION")
 AZURE_API_KEY=os.getenv("AZURE_API_KEY")
 AZURE_MODEL=os.getenv("AZURE_MODEL")
+AZURE_DEVELOPMENT=os.getenv("AZURE_DEVELOPMENT")
 
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
@@ -32,10 +33,10 @@ embeddings = AzureOpenAIEmbeddings(
 )
 
 llm = AzureChatOpenAI(
-    azure_endpoint="https://aes-gen-ai-internal.openai.azure.com",
-    api_version="2025-01-01-preview",
-    api_key="f3d09a596c054ff49a60664c34088afd",
-    azure_deployment="gpt-4o-mini",
+    azure_endpoint=AZURE_ENDPOINT,
+    api_version=AZURE_API_VERSION,
+    api_key=AZURE_API_KEY,
+    azure_deployment=AZURE_DEVELOPMENT,
     temperature=0.0
 )
 
